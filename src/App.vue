@@ -8,15 +8,20 @@ export default {
     return {
       projects: [],
       projectLinks: [],
+      isLoading: false,
     }
   },
   methods: {
-    fetchProjects() {
-      axios.get('http://127.0.0.1:8000/api/projects').then(res => {
+    fetchProjects(endpoint = 'http://127.0.0.1:8000/api/projects') {
+      this.isLoading = true;
+      axios.get(endpoint).then(res => {
         this.projects = res.data.projects.data;
         this.projectLinks = res.data.projects.links;
         console.log(this.projects)
-      })
+      }).catch(err => console.error(err))
+        .then(res => {
+          this.isLoading = false
+        })
     }
   },
   created() {
@@ -26,13 +31,23 @@ export default {
 </script>
  
 <template>
-  <AppLoader v-if="!projects.length" />
-  <main v-else class="container my-4">
+  <main class="container my-4">
+    <AppLoader v-if="isLoading" />
     <h1 class="text-center my-5">Projects</h1>
     <div class="row row-cols-3 gap-3">
     </div>
 
-    <table class="table table-dark table-striped">
+    <nav v-if="!isLoading" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li v-for="link in projectLinks" :class="[{ active: link.active }, { disabled: !link.url }]" class="page-item">
+          <button class="page-link" v-html="link.label" @click="fetchProjects(link.url)"></button>
+        </li>
+      </ul>
+    </nav>
+
+
+
+    <table v-if="!isLoading" class="table table-dark table-striped">
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -54,6 +69,13 @@ export default {
         </tr>
       </tbody>
     </table>
+    <nav v-if="!isLoading" aria-label="Page navigation example">
+      <ul class="pagination">
+        <li v-for="link in projectLinks" :class="[{ active: link.active }, { disabled: !link.url }]" class="page-item">
+          <button class="page-link" v-html="link.label" @click="fetchProjects(link.url)"></button>
+        </li>
+      </ul>
+    </nav>
   </main>
 </template>
  
