@@ -23,8 +23,8 @@ export default {
         </th>
 
         <!--  * Linguaggio -->
-        <th class="align-middle text-center py-5">
-            <span v-if="project.technologies" v-for="   technology    in    project.technologies   " :key="technology.id"
+        <th class="align-middle text-center py-5 w-25">
+            <span v-if="project.technologies" v-for="technology in project.technologies" :key="technology.id"
                 class="badge rounded-pill me-2 mb-2" :style="{ 'background-color': technology.color }">{{
                     technology.label }}</span>
 
