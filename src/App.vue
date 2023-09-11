@@ -1,8 +1,9 @@
 <script>
 import ProjectCard from './components/ProjectCard.vue';
+import AppLoader from './components/AppLoader.vue';
 import axios from 'axios';
 export default {
-  components: { ProjectCard },
+  components: { ProjectCard, AppLoader },
   data() {
     return {
       projects: [],
@@ -25,8 +26,9 @@ export default {
 </script>
  
 <template>
-  <main class="container">
-    <h1>Projects</h1>
+  <AppLoader v-if="!projects.length" />
+  <main v-else class="container my-4">
+    <h1 class="text-center my-5">Projects</h1>
     <div class="row row-cols-3 gap-3">
     </div>
 
