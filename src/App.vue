@@ -9,7 +9,7 @@ export default {
  
 <template>
   <AppHeader />
-  <main class="container my-4">
+  <main>
     <RouterView />
   </main>
 </template>

@@ -7,7 +7,9 @@ export default {
 </script>
 
 <template>
-  <ProjectList />
+  <div class="container my-4">
+    <ProjectList />
+  </div>
 </template>
 
 <style scoped></style>
