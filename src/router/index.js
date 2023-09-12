@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 // importo le pagine
 import HomePage from '../pages/HomePage.vue';
-import ProjectPage from '../pages/ProjectPage.vue';
+import ProjectsPage from '../pages/ProjectsPage.vue';
 import NotFoundPage from '../pages/NotFoundPage.vue';
 
 const router = createRouter({
@@ -10,7 +10,8 @@ const router = createRouter({
   linkExactActiveClass: 'active',
   routes: [
     { path: '/', name: 'home', component: HomePage },
-    { path: '/project', name: 'project', component: ProjectPage },
+    // { path: '/projects/', name: 'home', component: HomePage },
+    { path: '/projects', name: 'projects', component: ProjectsPage },
     { path: '/:pathMatch(.*)*', component: NotFoundPage },
   ],
 });

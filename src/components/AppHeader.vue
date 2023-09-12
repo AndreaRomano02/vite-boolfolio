@@ -19,7 +19,7 @@ export default {
               <RouterLink class="nav-link" to="/">Home</RouterLink>
             </li>
             <li class="nav-item fs-5">
-              <RouterLink class="nav-link" to="/project">Projects</RouterLink>
+              <RouterLink class="nav-link" to="/projects">Projects</RouterLink>
 
             </li>
           </ul>
