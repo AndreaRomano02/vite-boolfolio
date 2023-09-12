@@ -39,7 +39,8 @@ export default {
 
     <!-- * Info button -->
     <td class="align-middle">
-      <RouterLink class="btn btn-info" to="/"><i class="fas fa-eye"></i></RouterLink>
+      <RouterLink class="btn btn-info" :to="{ name: 'project-detail', params: { id: project.id } }"><i class="fas fa-eye"></i>
+      </RouterLink>
     </td>
   </tr>
 </template>
