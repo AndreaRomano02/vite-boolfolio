@@ -1,9 +1,10 @@
 <script>
 import axios from 'axios';
+import { router } from '../router';
 export default {
     data() {
         return {
-            // isLoading: false,
+            isLoading: false,
             form: {
                 email: '',
                 object: '',
@@ -18,13 +19,13 @@ export default {
     },
     methods: {
         formSubmit() {
-            // this.isLoading = true;
+            this.isLoading = true;
             axios.post('http://127.0.0.1:8000/api/mail', this.form).then((res) => {
                 this.form = this.presetForm;
             }).catch(() => {
             }).then(() => {
-                // this.isLoading = false;
-
+                this.isLoading = false;
+                router.push('/projects');
             })
         }
     }
@@ -32,7 +33,7 @@ export default {
 </script>
 
 <template>
-    <!-- <AppLoader v-if="isLoading" /> -->
+    <AppLoader v-if="isLoading" />
     <form @submit.prevent="formSubmit">
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
