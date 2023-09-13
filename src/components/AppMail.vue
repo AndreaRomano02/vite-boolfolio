@@ -16,19 +16,16 @@ export default {
             }
         }
     },
-    method: {
+    methods: {
         formSubmit() {
             // this.isLoading = true;
-            console.log('ciao')
+            axios.post('http://127.0.0.1:8000/api/mail', this.form).then((res) => {
+                this.form = this.presetForm;
+            }).catch(() => {
+            }).then(() => {
+                // this.isLoading = false;
 
-
-            // axios.post('http://127.0.0.1:8000/api/mail', this.form).then((res) => {
-            //     this.form = this.presetForm;
-            // }).catch(() => {
-            // }).then(() => {
-            //     // this.isLoading = false;
-
-            // })
+            })
         }
     }
 };
